@@ -79,7 +79,8 @@ function formatResetClock(timestamp) {
   return `${weekLabel(d, now)} ${hm}`;
 }
 
-// Same-day reset -> "X hr X min". Reset on another day -> "X d X hr".
+// Same-day reset -> "X hr X min", or just "X min" once under an hour.
+// Reset on another day -> "X d X hr", or just "X hr" once under a day.
 function formatRemaining(resetTimestamp) {
   const ms = resetTimestamp - Date.now();
   if (ms <= 0) return chrome.i18n.getMessage("alreadyReset");
@@ -88,12 +89,14 @@ function formatRemaining(resetTimestamp) {
     const totalMinutes = Math.round(ms / 60000);
     const h = Math.floor(totalMinutes / 60);
     const m = totalMinutes % 60;
+    if (h === 0) return chrome.i18n.getMessage("remainingMinutesOnly", [String(m)]);
     return chrome.i18n.getMessage("remainingSameDay", [String(h), String(m)]);
   }
 
   const totalHours = Math.floor(ms / 3600000);
   const days = Math.floor(totalHours / 24);
   const hours = totalHours % 24;
+  if (days === 0) return chrome.i18n.getMessage("remainingHoursOnly", [String(hours)]);
   return chrome.i18n.getMessage("remainingOtherDay", [String(days), String(hours)]);
 }
 

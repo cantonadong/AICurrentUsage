@@ -85,6 +85,14 @@
       "hours": { "content": "$2" }
     }
   },
+  "remainingMinutesOnly": {
+    "message": "$MINUTES$ min",
+    "placeholders": { "minutes": { "content": "$1" } }
+  },
+  "remainingHoursOnly": {
+    "message": "$HOURS$ hr",
+    "placeholders": { "hours": { "content": "$1" } }
+  },
   "lastUpdatedPrefix": {
     "message": "Last updated: $TIME$",
     "placeholders": { "time": { "content": "$1" } }

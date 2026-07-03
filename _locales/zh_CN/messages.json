@@ -85,6 +85,14 @@
       "hours": { "content": "$2" }
     }
   },
+  "remainingMinutesOnly": {
+    "message": "$MINUTES$ 分钟",
+    "placeholders": { "minutes": { "content": "$1" } }
+  },
+  "remainingHoursOnly": {
+    "message": "$HOURS$ 小时",
+    "placeholders": { "hours": { "content": "$1" } }
+  },
   "lastUpdatedPrefix": {
     "message": "最后更新: $TIME$",
     "placeholders": { "time": { "content": "$1" } }
