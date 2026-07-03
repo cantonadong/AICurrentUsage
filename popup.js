@@ -131,7 +131,11 @@ function renderError(message, debug) {
   statusLine.textContent = message || chrome.i18n.getMessage("noDataYet");
   clearBlock(sessionBlock);
   clearBlock(weeklyBlock);
-  allModelsCard.hidden = true;
+  // Deliberately doesn't touch allModelsCard.hidden here: whether a plan has
+  // the "all models" limit is only known after a successful fetch, so an
+  // error/placeholder state leaves the card in whatever state it was already
+  // in (visible by default) instead of forcing a hide/show that would resize
+  // the popup.
   if (debug) {
     debugDetails.hidden = false;
     debugText.textContent = debug;

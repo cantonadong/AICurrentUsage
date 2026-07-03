@@ -70,7 +70,12 @@ async function updateBadge(data) {
   if (percent == null) return;
   console.log(`[icon] updateBadge percent=${percent} at ${new Date().toLocaleTimeString()}`);
   try {
-    await chrome.action.setBadgeText({ text: String(percent) });
+    // Zero-padded to 2 digits so the badge's rendered width stays constant
+    // across the 0-99 range (only 100 itself is a 3rd character) — a
+    // changing badge width can shift the toolbar icon's bounding box and
+    // ripple into neighboring icons.
+    const text = percent >= 100 ? "100" : String(percent).padStart(2, "0");
+    await chrome.action.setBadgeText({ text });
     await chrome.action.setBadgeBackgroundColor({ color: badgeColorForPercent(percent) });
     await chrome.action.setBadgeTextColor({ color: "#ffffff" });
   } catch (e) {
