@@ -1,4 +1,4 @@
-# AI 用量监控（Claude / Codex）
+# AI 用量监控
 
 <img width="314" height="421" alt="image" src="https://github.com/user-attachments/assets/45ee3a77-1cea-438e-a124-b9d22c138f1b" />
 

@@ -1,6 +1,6 @@
 {
   "extName": {
-    "message": "AI 用量监控 (Claude / Codex)"
+    "message": "AI 用量监控"
   },
   "extDescription": {
     "message": "自动查询并显示 Claude Code / Codex 账户用量、重置时间与剩余重置时长，并在工具栏图标上用颜色角标提示"

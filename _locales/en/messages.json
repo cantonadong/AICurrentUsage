@@ -1,6 +1,6 @@
 {
   "extName": {
-    "message": "AI Usage Monitor (Claude / Codex)"
+    "message": "AI Usage Monitor"
   },
   "extDescription": {
     "message": "Automatically checks and displays your Claude Code / Codex account usage, reset time, and time remaining until reset, with a color-coded badge on the toolbar icon."
