@@ -68,6 +68,7 @@ function badgeColorForPercent(percent) {
 async function updateBadge(data) {
   const percent = data && data.ok && data.session ? data.session.percent : null;
   if (percent == null) return;
+  console.log(`[icon] updateBadge percent=${percent} at ${new Date().toLocaleTimeString()}`);
   try {
     await chrome.action.setBadgeText({ text: String(percent) });
     await chrome.action.setBadgeBackgroundColor({ color: badgeColorForPercent(percent) });
