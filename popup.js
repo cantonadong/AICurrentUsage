@@ -205,4 +205,12 @@ chrome.storage.onChanged.addListener((changes, area) => {
   }
 });
 
+// Stop the 30s tick timers the instant the popup starts closing, instead of
+// letting Chrome garbage-collect them whenever it gets around to it. This
+// guarantees no DOM mutation is in flight in this popup's last moments.
+window.addEventListener("pagehide", () => {
+  if (sessionBlock.tickHandle) clearInterval(sessionBlock.tickHandle);
+  if (weeklyBlock.tickHandle) clearInterval(weeklyBlock.tickHandle);
+});
+
 loadCached();
