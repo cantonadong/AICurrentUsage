@@ -41,6 +41,17 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   return false;
 });
 
+// popup.js opens this port on load and holds it for as long as the popup
+// stays open. An active port keeps this service worker from being
+// terminated as idle, so opening the popup doesn't have to respawn it.
+chrome.runtime.onConnect.addListener((port) => {
+  if (port.name !== "popup") return;
+  console.log(`[sw] popup connected at ${new Date().toLocaleTimeString()}`);
+  port.onDisconnect.addListener(() => {
+    console.log(`[sw] popup disconnected at ${new Date().toLocaleTimeString()}`);
+  });
+});
+
 function ensureAlarm() {
   chrome.alarms.get(ALARM_NAME, (existing) => {
     if (!existing) {

@@ -1,3 +1,9 @@
+// Holds the service worker awake for as long as this popup stays open,
+// instead of letting Chrome terminate it after ~30s idle and having to
+// respawn it on the next click (that respawn is what was making the
+// toolbar icon visibly redraw/flicker on open).
+chrome.runtime.connect({ name: "popup" });
+
 function applyI18n() {
   document.documentElement.lang = chrome.i18n.getUILanguage();
   document.querySelectorAll("[data-i18n]").forEach((el) => {
