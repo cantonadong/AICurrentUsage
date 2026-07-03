@@ -1,0 +1,106 @@
+{
+  "extName": {
+    "message": "AI 用量监控 (Claude / Codex)"
+  },
+  "extDescription": {
+    "message": "自动查询并显示 Claude Code / Codex 账户用量、重置时间与剩余重置时长，并在工具栏图标上用颜色角标提示"
+  },
+  "actionTitle": {
+    "message": "AI 用量监控"
+  },
+  "codexComingSoon": {
+    "message": "Codex（即将支持）"
+  },
+  "comingSoonTooltip": {
+    "message": "即将支持"
+  },
+  "claudeUsageTitle": {
+    "message": "Claude 用量"
+  },
+  "refreshTitle": {
+    "message": "刷新"
+  },
+  "sessionCardTitle": {
+    "message": "Current Session（每 5 小时）"
+  },
+  "allModelsCardTitle": {
+    "message": "All Models（每 7 天）"
+  },
+  "resetTimeLabel": {
+    "message": "重置时间"
+  },
+  "remainingLabel": {
+    "message": "剩余时长"
+  },
+  "debugSummary": {
+    "message": "调试信息（抓取异常时可参考）"
+  },
+  "notQueriedYet": {
+    "message": "尚未查询"
+  },
+  "queryingStatus": {
+    "message": "正在查询 claude.ai ..."
+  },
+  "refreshFailed": {
+    "message": "刷新失败"
+  },
+  "errorPrefix": {
+    "message": "出错: $MESSAGE$",
+    "placeholders": { "message": { "content": "$1" } }
+  },
+  "noDataYet": {
+    "message": "暂无数据，请点击右上角刷新"
+  },
+  "alreadyReset": {
+    "message": "已重置"
+  },
+  "tomorrow": {
+    "message": "明天"
+  },
+  "thisWeekday0": { "message": "周日" },
+  "thisWeekday1": { "message": "周一" },
+  "thisWeekday2": { "message": "周二" },
+  "thisWeekday3": { "message": "周三" },
+  "thisWeekday4": { "message": "周四" },
+  "thisWeekday5": { "message": "周五" },
+  "thisWeekday6": { "message": "周六" },
+  "nextWeekday0": { "message": "下周日" },
+  "nextWeekday1": { "message": "下周一" },
+  "nextWeekday2": { "message": "下周二" },
+  "nextWeekday3": { "message": "下周三" },
+  "nextWeekday4": { "message": "下周四" },
+  "nextWeekday5": { "message": "下周五" },
+  "nextWeekday6": { "message": "下周六" },
+  "remainingSameDay": {
+    "message": "$HOURS$ 小时 $MINUTES$ 分钟",
+    "placeholders": {
+      "hours": { "content": "$1" },
+      "minutes": { "content": "$2" }
+    }
+  },
+  "remainingOtherDay": {
+    "message": "$DAYS$ 天 $HOURS$ 小时",
+    "placeholders": {
+      "days": { "content": "$1" },
+      "hours": { "content": "$2" }
+    }
+  },
+  "lastUpdatedPrefix": {
+    "message": "最后更新: $TIME$",
+    "placeholders": { "time": { "content": "$1" } }
+  },
+  "notLoggedIn": {
+    "message": "请先在浏览器中登录 claude.ai 后再试"
+  },
+  "missingSessionField": {
+    "message": "返回数据里没有找到 session 用量字段，接口格式可能变了"
+  },
+  "httpError": {
+    "message": "接口返回异常状态: HTTP $CODE$",
+    "placeholders": { "code": { "content": "$1" } }
+  },
+  "requestFailed": {
+    "message": "请求失败: $MESSAGE$",
+    "placeholders": { "message": { "content": "$1" } }
+  }
+}

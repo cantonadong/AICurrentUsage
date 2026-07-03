@@ -1,0 +1,157 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  width: 300px;
+  font-family: -apple-system, "Segoe UI", "Microsoft YaHei", Arial, sans-serif;
+  font-size: 13px;
+  color: #1f1f1f;
+  background: #faf9f7;
+}
+
+.app { padding: 10px; }
+
+.tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 6px 8px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.tab-btn.active {
+  background: #d97757;
+  border-color: #d97757;
+  color: #fff;
+}
+
+.tab-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 8px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 0;
+}
+
+.header-row {
+  margin-bottom: 8px;
+}
+
+.card-title-row {
+  margin-bottom: 4px;
+}
+
+.card-title-row .label {
+  font-weight: 600;
+  color: #1f1f1f;
+  font-size: 12px;
+}
+
+.label {
+  color: #666;
+}
+
+.value {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.refresh-btn {
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+.refresh-btn:hover { background: #f1efec; }
+.refresh-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.usage-bar-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.usage-bar {
+  flex: 1;
+  height: 8px;
+  background: #f0ede8;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.usage-fill {
+  height: 100%;
+  background: #d97757;
+  transition: width 0.3s ease;
+}
+
+.usage-percent {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  min-width: 38px;
+  text-align: right;
+}
+
+.status {
+  min-height: 16px;
+  color: #b3542c;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.debug {
+  margin-top: 8px;
+  font-size: 11px;
+  color: #888;
+}
+
+.debug pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 160px;
+  overflow-y: auto;
+  background: #f6f5f2;
+  padding: 6px;
+  border-radius: 6px;
+}
+
+.footer {
+  margin-top: 8px;
+  text-align: right;
+  color: #999;
+  font-size: 11px;
+}

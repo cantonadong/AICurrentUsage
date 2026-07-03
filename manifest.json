@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "__MSG_extName__",
+  "version": "0.3.0",
+  "description": "__MSG_extDescription__",
+  "default_locale": "zh_CN",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "__MSG_actionTitle__",
+    "default_icon": "icon.png"
+  },
+  "icons": {
+    "16": "icon.png",
+    "32": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["storage", "alarms", "cookies"],
+  "host_permissions": ["https://claude.ai/*"]
+}

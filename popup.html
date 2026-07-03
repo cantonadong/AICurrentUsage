@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<title data-i18n="actionTitle">AI 用量监控</title>
+<link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="app">
+    <div class="tabs">
+      <button class="tab-btn active" data-provider="claude">Claude</button>
+      <button class="tab-btn" data-provider="codex" disabled data-i18n="codexComingSoon" data-i18n-title="comingSoonTooltip" title="即将支持">Codex（即将支持）</button>
+    </div>
+
+    <div id="claude-panel" class="panel">
+      <div class="row header-row">
+        <span class="label" data-i18n="claudeUsageTitle">Claude 用量</span>
+        <button id="refresh-btn" class="refresh-btn" data-i18n-title="refreshTitle" title="刷新">⟳</button>
+      </div>
+
+      <div class="cards-row">
+        <div class="card">
+          <div class="row card-title-row">
+            <span class="label" data-i18n="sessionCardTitle">Current Session（每 5 小时）</span>
+          </div>
+
+          <div class="usage-bar-wrap">
+            <div class="usage-bar"><div id="session-fill" class="usage-fill" style="width:0%"></div></div>
+            <span id="session-percent" class="usage-percent">--%</span>
+          </div>
+
+          <div class="row">
+            <span class="label" data-i18n="resetTimeLabel">重置时间</span>
+            <span id="session-reset-time" class="value">--:--</span>
+          </div>
+          <div class="row">
+            <span class="label" data-i18n="remainingLabel">剩余时长</span>
+            <span id="session-remaining-time" class="value">--:--</span>
+          </div>
+        </div>
+
+        <div id="all-models-card" class="card" hidden>
+          <div class="row card-title-row">
+            <span class="label" data-i18n="allModelsCardTitle">All Models（每 7 天）</span>
+          </div>
+
+          <div class="usage-bar-wrap">
+            <div class="usage-bar"><div id="weekly-fill" class="usage-fill" style="width:0%"></div></div>
+            <span id="weekly-percent" class="usage-percent">--%</span>
+          </div>
+
+          <div class="row">
+            <span class="label" data-i18n="resetTimeLabel">重置时间</span>
+            <span id="weekly-reset-time" class="value">--:--</span>
+          </div>
+          <div class="row">
+            <span class="label" data-i18n="remainingLabel">剩余时长</span>
+            <span id="weekly-remaining-time" class="value">--:--</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="status-line" class="status"></div>
+
+      <details id="debug-details" class="debug" hidden>
+        <summary data-i18n="debugSummary">调试信息（抓取异常时可参考）</summary>
+        <pre id="debug-text"></pre>
+      </details>
+
+      <div class="footer">
+        <span id="last-updated" data-i18n="notQueriedYet">尚未查询</span>
+      </div>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

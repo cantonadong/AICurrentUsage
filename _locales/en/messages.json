@@ -1,0 +1,106 @@
+{
+  "extName": {
+    "message": "AI Usage Monitor (Claude / Codex)"
+  },
+  "extDescription": {
+    "message": "Automatically checks and displays your Claude Code / Codex account usage, reset time, and time remaining until reset, with a color-coded badge on the toolbar icon."
+  },
+  "actionTitle": {
+    "message": "AI Usage Monitor"
+  },
+  "codexComingSoon": {
+    "message": "Codex (Coming soon)"
+  },
+  "comingSoonTooltip": {
+    "message": "Coming soon"
+  },
+  "claudeUsageTitle": {
+    "message": "Claude Usage"
+  },
+  "refreshTitle": {
+    "message": "Refresh"
+  },
+  "sessionCardTitle": {
+    "message": "Current Session (every 5 hours)"
+  },
+  "allModelsCardTitle": {
+    "message": "All Models (every 7 days)"
+  },
+  "resetTimeLabel": {
+    "message": "Reset Time"
+  },
+  "remainingLabel": {
+    "message": "Remaining"
+  },
+  "debugSummary": {
+    "message": "Debug info (useful if fetching fails)"
+  },
+  "notQueriedYet": {
+    "message": "Not queried yet"
+  },
+  "queryingStatus": {
+    "message": "Querying claude.ai ..."
+  },
+  "refreshFailed": {
+    "message": "Refresh failed"
+  },
+  "errorPrefix": {
+    "message": "Error: $MESSAGE$",
+    "placeholders": { "message": { "content": "$1" } }
+  },
+  "noDataYet": {
+    "message": "No data yet — click refresh in the top right"
+  },
+  "alreadyReset": {
+    "message": "Reset"
+  },
+  "tomorrow": {
+    "message": "Tomorrow"
+  },
+  "thisWeekday0": { "message": "Sun" },
+  "thisWeekday1": { "message": "Mon" },
+  "thisWeekday2": { "message": "Tue" },
+  "thisWeekday3": { "message": "Wed" },
+  "thisWeekday4": { "message": "Thu" },
+  "thisWeekday5": { "message": "Fri" },
+  "thisWeekday6": { "message": "Sat" },
+  "nextWeekday0": { "message": "Next Sun" },
+  "nextWeekday1": { "message": "Next Mon" },
+  "nextWeekday2": { "message": "Next Tue" },
+  "nextWeekday3": { "message": "Next Wed" },
+  "nextWeekday4": { "message": "Next Thu" },
+  "nextWeekday5": { "message": "Next Fri" },
+  "nextWeekday6": { "message": "Next Sat" },
+  "remainingSameDay": {
+    "message": "$HOURS$ hr $MINUTES$ min",
+    "placeholders": {
+      "hours": { "content": "$1" },
+      "minutes": { "content": "$2" }
+    }
+  },
+  "remainingOtherDay": {
+    "message": "$DAYS$ d $HOURS$ hr",
+    "placeholders": {
+      "days": { "content": "$1" },
+      "hours": { "content": "$2" }
+    }
+  },
+  "lastUpdatedPrefix": {
+    "message": "Last updated: $TIME$",
+    "placeholders": { "time": { "content": "$1" } }
+  },
+  "notLoggedIn": {
+    "message": "Please log in to claude.ai in this browser first"
+  },
+  "missingSessionField": {
+    "message": "Session usage field not found in the response; the API format may have changed"
+  },
+  "httpError": {
+    "message": "API returned an unexpected status: HTTP $CODE$",
+    "placeholders": { "code": { "content": "$1" } }
+  },
+  "requestFailed": {
+    "message": "Request failed: $MESSAGE$",
+    "placeholders": { "message": { "content": "$1" } }
+  }
+}
