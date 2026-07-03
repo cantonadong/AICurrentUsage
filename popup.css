@@ -3,6 +3,7 @@
 body {
   margin: 0;
   width: 300px;
+  min-height: 360px;
   font-family: -apple-system, "Segoe UI", "Microsoft YaHei", Arial, sans-serif;
   font-size: 13px;
   color: #1f1f1f;
