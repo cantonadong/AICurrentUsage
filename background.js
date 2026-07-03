@@ -146,7 +146,7 @@ async function refreshClaudeUsage() {
 
   const payload = await resp.json();
   const sessionRaw = payload && payload.five_hour;
-  if (!sessionRaw || typeof sessionRaw.utilization !== "number" || !sessionRaw.resets_at) {
+  if (!sessionRaw || typeof sessionRaw.utilization !== "number") {
     const data = errorData(
       chrome.i18n.getMessage("missingSessionField"),
       JSON.stringify(payload, null, 2).slice(0, 3000)
@@ -163,12 +163,15 @@ async function refreshClaudeUsage() {
       ? { percent: Math.round(weeklyRaw.utilization), resetTimestamp: new Date(weeklyRaw.resets_at).getTime() }
       : null;
 
+  // resets_at is null when there's no session currently in progress (nothing
+  // sent since the last reset) — utilization is 0 and there's no countdown
+  // to show, as opposed to a parse failure.
   const data = {
     ok: true,
     updatedAt: Date.now(),
     session: {
       percent: Math.round(sessionRaw.utilization),
-      resetTimestamp: new Date(sessionRaw.resets_at).getTime()
+      resetTimestamp: sessionRaw.resets_at ? new Date(sessionRaw.resets_at).getTime() : null
     },
     allModels
   };

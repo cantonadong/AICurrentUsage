@@ -54,6 +54,9 @@
   "alreadyReset": {
     "message": "Reset"
   },
+  "noActiveSession": {
+    "message": "No session in progress"
+  },
   "tomorrow": {
     "message": "Tomorrow"
   },

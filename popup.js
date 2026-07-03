@@ -122,6 +122,11 @@ function clearBlock(block) {
 }
 
 function tickBlock(block, info) {
+  if (info.resetTimestamp == null) {
+    block.resetEl.textContent = "--:--";
+    block.remainingEl.textContent = chrome.i18n.getMessage("noActiveSession");
+    return;
+  }
   block.resetEl.textContent = formatResetClock(info.resetTimestamp);
   block.remainingEl.textContent = formatRemaining(info.resetTimestamp);
 }
@@ -133,7 +138,7 @@ function renderBlock(block, info) {
 
   tickBlock(block, info);
   if (block.tickHandle) clearInterval(block.tickHandle);
-  block.tickHandle = setInterval(() => tickBlock(block, info), 30 * 1000);
+  block.tickHandle = info.resetTimestamp == null ? null : setInterval(() => tickBlock(block, info), 30 * 1000);
 }
 
 function renderError(message, debug) {

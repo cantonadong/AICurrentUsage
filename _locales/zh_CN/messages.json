@@ -54,6 +54,9 @@
   "alreadyReset": {
     "message": "已重置"
   },
+  "noActiveSession": {
+    "message": "当前无进行中的会话"
+  },
   "tomorrow": {
     "message": "明天"
   },
