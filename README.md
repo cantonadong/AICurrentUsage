@@ -1,5 +1,8 @@
 # AI 用量监控（Claude / Codex）
 
+<img width="314" height="421" alt="image" src="https://github.com/user-attachments/assets/45ee3a77-1cea-438e-a124-b9d22c138f1b" />
+
+
 Chrome 插件（Manifest V3）。`background.js`（service worker）直接调用 `claude.ai` 自己在渲染
 Settings → Usage 页面时用的同一个 JSON 接口：
 
