@@ -7,10 +7,17 @@ const CLAUDE_ORIGIN = "https://claude.ai";
 const ALARM_NAME = "claude-usage-refresh";
 const REFRESH_PERIOD_MINUTES = 5;
 
+// Deliberately does NOT kick off a refreshClaudeUsage() network call here.
+// onInstalled fires on every extension reload (including "reload" clicks in
+// chrome://extensions during development) — if that fetch happens to
+// resolve at the exact moment the user clicks the toolbar icon, the
+// resulting badge/icon update makes Chrome redraw the toolbar mid-click,
+// which is exactly the flicker/missed-click bug this was causing. The first
+// real fetch now only ever happens from a user-initiated refresh click or
+// the periodic alarm below — both deterministic, neither racing a click.
 chrome.runtime.onInstalled.addListener(() => {
   ensureAlarm();
   restoreBadgeFromCache();
-  refreshClaudeUsage().catch(() => {});
 });
 
 chrome.runtime.onStartup.addListener(() => {
