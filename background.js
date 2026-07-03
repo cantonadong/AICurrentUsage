@@ -65,18 +65,15 @@ async function restoreBadgeFromCache() {
   if (claudeUsage) await updateBadge(claudeUsage);
 }
 
-// 0-20 green, >20-40 olive/lime, >40-60 amber, >60-80 orange, >80-90 red,
-// >90-100 deep red. The >20-40 tier deliberately leans yellow (not just a
-// lighter green) so it reads as visibly different from the 0-20 tier at
-// badge size; the >90 tier is a noticeably darker red than >80-90 as a
-// last-call warning.
+// 0-20 green, >20-40 blue, >40-60 yellow, >60-80 orange, >80-90 red,
+// >90-100 deep red, as a last-call warning.
 function badgeColorForPercent(percent) {
-  if (percent <= 20) return "#2e7d32";
-  if (percent <= 40) return "#9e9d24";
-  if (percent <= 60) return "#f57f17";
-  if (percent <= 80) return "#ef6c00";
-  if (percent <= 90) return "#c62828";
-  return "#7f0000";
+  if (percent <= 20) return "#22C55E";
+  if (percent <= 40) return "#0284C7";
+  if (percent <= 60) return "#FACC15";
+  if (percent <= 80) return "#F97316";
+  if (percent <= 90) return "#EF4444";
+  return "#7F1D1D";
 }
 
 // The badge always reflects the session (5-hour) limit, since that's the
