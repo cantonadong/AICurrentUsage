@@ -40,8 +40,8 @@ GET https://claude.ai/api/organizations/{orgId}/usage
 1. 用户点击弹窗里的 ⟳ 按钮，立即刷新一次
 2. 插件安装后自动开始，此后每 5 分钟在后台自动刷新一次（用 `chrome.alarms` 实现，弹窗关不关闭都会执行）
 
-Codex 部分暂为占位（按钮已禁用），后续可以在 `popup.html` / `popup.js` / `background.js` 中按 Claude
-的模式加一个 provider（找到 Codex 网页版对应的用量接口后，套用同样的 fetch 逻辑即可）。
+Codex 标签页已支持查询 `https://chatgpt.com/backend-api/wham/usage`，并复用同一套卡片展示 5 小时窗口和每周窗口。
+切换到 Codex 时，弹窗会自动切换为银灰色主题；查询依赖浏览器中已有的 `chatgpt.com` 登录态。
 
 ## 安装（开发者模式加载）
 

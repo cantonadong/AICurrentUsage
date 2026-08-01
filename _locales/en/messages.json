@@ -17,6 +17,9 @@
   "claudeUsageTitle": {
     "message": "Claude Usage"
   },
+  "codexUsageTitle": {
+    "message": "Codex Usage"
+  },
   "refreshTitle": {
     "message": "Refresh"
   },
@@ -40,6 +43,9 @@
   },
   "queryingStatus": {
     "message": "Querying claude.ai ..."
+  },
+  "queryingCodexStatus": {
+    "message": "Querying chatgpt.com Codex usage ..."
   },
   "refreshFailed": {
     "message": "Refresh failed"
@@ -103,8 +109,17 @@
   "notLoggedIn": {
     "message": "Please log in to claude.ai in this browser first"
   },
+  "codexNotLoggedIn": {
+    "message": "Please log in to chatgpt.com in this browser first"
+  },
   "missingSessionField": {
     "message": "Session usage field not found in the response; the API format may have changed"
+  },
+  "missingCodexUsageField": {
+    "message": "Codex usage fields were not found in the response; the API format may have changed"
+  },
+  "missingCodexAuthField": {
+    "message": "ChatGPT session token was not found; please reload chatgpt.com and try again"
   },
   "httpError": {
     "message": "API returned an unexpected status: HTTP $CODE$",

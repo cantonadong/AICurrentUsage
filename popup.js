@@ -16,11 +16,14 @@ function applyI18n() {
 applyI18n();
 
 const refreshBtn = document.getElementById("refresh-btn");
+const tabButtons = Array.from(document.querySelectorAll(".tab-btn"));
+const usageTitle = document.getElementById("usage-title");
 const statusLine = document.getElementById("status-line");
 const lastUpdatedEl = document.getElementById("last-updated");
 const debugDetails = document.getElementById("debug-details");
 const debugText = document.getElementById("debug-text");
 const allModelsCard = document.getElementById("all-models-card");
+let activeProvider = "claude";
 
 const sessionBlock = {
   fillEl: document.getElementById("session-fill"),
@@ -108,6 +111,9 @@ function formatRemaining(resetTimestamp) {
 
 function setBusy(busy) {
   refreshBtn.disabled = busy;
+  tabButtons.forEach((btn) => {
+    btn.disabled = busy;
+  });
 }
 
 function clearBlock(block) {
@@ -158,6 +164,32 @@ function renderError(message, debug) {
   }
 }
 
+function providerLabel(provider) {
+  return provider === "codex" ? "Codex" : "Claude";
+}
+
+function storageKeyForProvider(provider) {
+  return provider === "codex" ? "codexUsage" : "claudeUsage";
+}
+
+function applyProviderTheme(provider) {
+  document.body.dataset.provider = provider === "codex" ? "codex" : "claude";
+  tabButtons.forEach((btn) => {
+    btn.classList.toggle("active", btn.dataset.provider === provider);
+  });
+  usageTitle.textContent = chrome.i18n.getMessage(
+    provider === "codex" ? "codexUsageTitle" : "claudeUsageTitle"
+  ) || `${providerLabel(provider)} Usage`;
+}
+
+async function setActiveProvider(provider) {
+  activeProvider = provider === "codex" ? "codex" : "claude";
+  applyProviderTheme(activeProvider);
+  await chrome.storage.local.set({ activeProvider });
+  chrome.runtime.sendMessage({ type: "set-provider", provider: activeProvider }).catch(() => {});
+  await loadCached();
+}
+
 function renderSuccess(data) {
   statusLine.textContent = "";
   renderBlock(sessionBlock, data.session);
@@ -183,8 +215,14 @@ function render(data) {
 }
 
 async function loadCached() {
-  const { claudeUsage } = await chrome.storage.local.get("claudeUsage");
-  if (claudeUsage) render(claudeUsage);
+  const key = storageKeyForProvider(activeProvider);
+  const cached = await chrome.storage.local.get(key);
+  if (cached[key]) {
+    render(cached[key]);
+  } else {
+    renderError(chrome.i18n.getMessage("noDataYet"));
+    lastUpdatedEl.textContent = chrome.i18n.getMessage("notQueriedYet");
+  }
 }
 
 // Actual fetching happens in background.js (a direct fetch() to claude.ai's
@@ -193,10 +231,12 @@ async function loadCached() {
 // auto-refresh alarm keeps working while the popup is closed.
 refreshBtn.addEventListener("click", async () => {
   setBusy(true);
-  statusLine.textContent = chrome.i18n.getMessage("queryingStatus");
+  statusLine.textContent = chrome.i18n.getMessage(
+    activeProvider === "codex" ? "queryingCodexStatus" : "queryingStatus"
+  );
   debugDetails.hidden = true;
   try {
-    const resp = await chrome.runtime.sendMessage({ type: "refresh-claude" });
+    const resp = await chrome.runtime.sendMessage({ type: "refresh-provider", provider: activeProvider });
     if (resp && resp.ok) {
       render(resp.data);
     } else {
@@ -214,8 +254,8 @@ refreshBtn.addEventListener("click", async () => {
 
 // Keeps the popup in sync if the background alarm refreshes data while the popup is open.
 chrome.storage.onChanged.addListener((changes, area) => {
-  if (area === "local" && changes.claudeUsage) {
-    render(changes.claudeUsage.newValue);
+  if (area === "local" && changes[storageKeyForProvider(activeProvider)]) {
+    render(changes[storageKeyForProvider(activeProvider)].newValue);
   }
 });
 
@@ -227,4 +267,14 @@ window.addEventListener("pagehide", () => {
   if (weeklyBlock.tickHandle) clearInterval(weeklyBlock.tickHandle);
 });
 
-loadCached();
+tabButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    setActiveProvider(btn.dataset.provider);
+  });
+});
+
+chrome.storage.local.get("activeProvider").then(({ activeProvider: cachedProvider }) => {
+  activeProvider = cachedProvider === "codex" ? "codex" : "claude";
+  applyProviderTheme(activeProvider);
+  loadCached();
+});

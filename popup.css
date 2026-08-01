@@ -1,13 +1,28 @@
 * { box-sizing: border-box; }
 
 body {
+  --accent: #d97757;
+  --accent-status: #b3542c;
+  --surface: #faf9f7;
+  --muted-surface: #f1efec;
+  --bar-bg: #f0ede8;
+  --debug-bg: #f6f5f2;
   margin: 0;
   width: 300px;
   min-height: 360px;
   font-family: -apple-system, "Segoe UI", "Microsoft YaHei", Arial, sans-serif;
   font-size: 13px;
   color: #1f1f1f;
-  background: #faf9f7;
+  background: var(--surface);
+}
+
+body[data-provider="codex"] {
+  --accent: #8b949e;
+  --accent-status: #6b7280;
+  --surface: #f7f8f9;
+  --muted-surface: #eceff2;
+  --bar-bg: #e6e9ed;
+  --debug-bg: #f1f3f5;
 }
 
 .app { padding: 10px; }
@@ -29,8 +44,8 @@ body {
 }
 
 .tab-btn.active {
-  background: #d97757;
-  border-color: #d97757;
+  background: var(--accent);
+  border-color: var(--accent);
   color: #fff;
 }
 
@@ -87,7 +102,7 @@ body {
   border-radius: 6px;
 }
 
-.refresh-btn:hover { background: #f1efec; }
+.refresh-btn:hover { background: var(--muted-surface); }
 .refresh-btn:disabled {
   opacity: 0.5;
   cursor: default;
@@ -109,14 +124,14 @@ body {
 .usage-bar {
   flex: 1;
   height: 8px;
-  background: #f0ede8;
+  background: var(--bar-bg);
   border-radius: 999px;
   overflow: hidden;
 }
 
 .usage-fill {
   height: 100%;
-  background: #d97757;
+  background: var(--accent);
   transition: width 0.3s ease;
 }
 
@@ -129,7 +144,7 @@ body {
 
 .status {
   min-height: 16px;
-  color: #b3542c;
+  color: var(--accent-status);
   font-size: 12px;
   margin-top: 4px;
 }
@@ -145,7 +160,7 @@ body {
   word-break: break-word;
   max-height: 160px;
   overflow-y: auto;
-  background: #f6f5f2;
+  background: var(--debug-bg);
   padding: 6px;
   border-radius: 6px;
 }

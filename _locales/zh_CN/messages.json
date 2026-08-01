@@ -3,7 +3,7 @@
     "message": "AI 用量监控"
   },
   "extDescription": {
-    "message": "自动查询并显示 Claude Code / Codex 账户用量、重置时间与剩余重置时长，并在工具栏图标上用颜色角标提示"
+    "message": "自动查询并显示 Claude Code / Codex 账号用量、重置时间与剩余重置时长，并在工具栏图标上用颜色角标提示"
   },
   "actionTitle": {
     "message": "AI 用量监控"
@@ -16,6 +16,9 @@
   },
   "claudeUsageTitle": {
     "message": "Claude 用量"
+  },
+  "codexUsageTitle": {
+    "message": "Codex 用量"
   },
   "refreshTitle": {
     "message": "刷新"
@@ -40,6 +43,9 @@
   },
   "queryingStatus": {
     "message": "正在查询 claude.ai ..."
+  },
+  "queryingCodexStatus": {
+    "message": "正在查询 chatgpt.com Codex 用量 ..."
   },
   "refreshFailed": {
     "message": "刷新失败"
@@ -103,8 +109,17 @@
   "notLoggedIn": {
     "message": "请先在浏览器中登录 claude.ai 后再试"
   },
+  "codexNotLoggedIn": {
+    "message": "请先在浏览器中登录 chatgpt.com 后再试"
+  },
   "missingSessionField": {
     "message": "返回数据里没有找到 session 用量字段，接口格式可能变了"
+  },
+  "missingCodexUsageField": {
+    "message": "返回数据里没有找到 Codex 用量字段，接口格式可能变了"
+  },
+  "missingCodexAuthField": {
+    "message": "没有找到 ChatGPT 会话 token，请刷新 chatgpt.com 后再试"
   },
   "httpError": {
     "message": "接口返回异常状态: HTTP $CODE$",
