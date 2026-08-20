@@ -26,6 +26,9 @@
   "sessionCardTitle": {
     "message": "Current Session（每 5 小时）"
   },
+  "codexSessionCardTitle": {
+    "message": "Current Session（每 7 天）"
+  },
   "allModelsCardTitle": {
     "message": "All Models（每 7 天）"
   },

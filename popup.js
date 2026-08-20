@@ -180,6 +180,9 @@ function applyProviderTheme(provider) {
   usageTitle.textContent = chrome.i18n.getMessage(
     provider === "codex" ? "codexUsageTitle" : "claudeUsageTitle"
   ) || `${providerLabel(provider)} Usage`;
+  document.getElementById("session-card-title").textContent = chrome.i18n.getMessage(
+    provider === "codex" ? "codexSessionCardTitle" : "sessionCardTitle"
+  );
 }
 
 async function setActiveProvider(provider) {

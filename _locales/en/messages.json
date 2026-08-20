@@ -26,6 +26,9 @@
   "sessionCardTitle": {
     "message": "Current Session (every 5 hours)"
   },
+  "codexSessionCardTitle": {
+    "message": "Current Session (every 7 days)"
+  },
   "allModelsCardTitle": {
     "message": "All Models (every 7 days)"
   },
