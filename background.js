@@ -130,12 +130,14 @@ function badgeColorForPercent(percent) {
   return "#7F1D1D";
 }
 
-// The badge always reflects the session (5-hour) limit, since that's the
-// one users hit most often day-to-day; "all models" (7-day) is shown only
-// inside the popup. Wrapped in try/catch so a badge-API hiccup can't fail
+// The badge normally reflects the session (5-hour) limit. When the 7-day
+// limit exceeds 95%, show that instead so an imminent weekly limit is visible.
+// Wrapped in try/catch so a badge-API hiccup can't fail
 // the whole refresh (data is already saved to storage by the time this runs).
 async function updateBadge(data) {
-  const percent = data && data.ok && data.session ? data.session.percent : null;
+  const percent = data && data.ok && data.session
+    ? (data.allModels && data.allModels.percent > 95 ? data.allModels.percent : data.session.percent)
+    : null;
   if (percent == null) return;
   console.log(`[icon] updateBadge percent=${percent} at ${new Date().toLocaleTimeString()}`);
   try {
